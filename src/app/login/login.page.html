@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Industrial App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+ 
+<ion-content scroll-y="false">
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-lg="6" size="6" style="text-align: center">
+      <img src="https://industriall.ai/wp-content/uploads/2021/06/Logo-para-blog-1.svg">
+    </ion-col>
+  </ion-row>
+ 
+  <form (ngSubmit)="login()" [formGroup]="credentials">
+    <div class="input-group">
+      <ion-item>
+        <ion-input type="userName" placeholder="UserName" formControlName="userName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+    </div>
+ 
+    <ion-button type="submit" expand="block" [disabled]="!credentials.valid">Login</ion-button>
+    
+  </form>
+</ion-content>

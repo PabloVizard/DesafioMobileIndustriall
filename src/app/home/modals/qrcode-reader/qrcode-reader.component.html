@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title style="text-align: center;">
+      Scan
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close" slot="icon-only" style="transform:scale(1.5);"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content scroll-y="false">
+   
+  
+ 
+  <!-- Shows our camera stream -->
+  <video #video [hidden]="!scanActive" width="100%"></video>
+ 
+  <!-- Used to render the camera stream images -->
+  
+ 
+  <ion-card *ngIf="scanResult">
+    <ion-card-header>
+      <ion-card-title>Equipamento Selecionado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="12">
+          Nome: {{ equipmentScanned[0].nome }}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          Tag: {{ equipmentScanned[0].tag }}
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+ 
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <canvas #canvas hidden></canvas>
+  <ion-button *ngIf="!scanResult" expand="full" color="danger" (click)="closeModal()">
+    Fechar
+  </ion-button>
+ 
+  <ion-row *ngIf="scanResult">
+    <ion-col size="6" >
+      <ion-button expand="full" (click)="confirm()"  >
+        <ion-icon slot="start" name="checkmark"></ion-icon>
+        Confirmar
+      </ion-button>  
+    </ion-col>
+    <ion-col size="6">
+      <ion-button expand="full" color="danger" (click)="closeModal()">
+        Fechar
+      </ion-button>  
+    </ion-col>
+  </ion-row>
+  
+  </ion-toolbar>
+</ion-footer>

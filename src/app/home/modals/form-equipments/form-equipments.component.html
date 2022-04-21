@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title style="text-align: center;">
+      {{selectedEquipment[0].nome}} - {{selectedEquipment[0].tag}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content mode="ios" >
+  
+  <form [formGroup]="answerEquipment" (ngSubmit)="sendAnswers()">
+
+    <ion-list *ngFor="let question of questions; let i=index"> 
+
+      <ion-item>
+        
+        <ion-label color="primary" class="titleForms" >{{question.texto}}</ion-label>
+        
+      </ion-item>
+      <ion-item>
+
+        <ion-list style="width: 100%;">
+          <ion-item lines="none" *ngFor="let answer of question.respostas; let j=index" >
+            
+            <ion-checkbox mode="ios" slot="start" [value]="answer.id" 
+               [disabled]="!question.respostas[j].exibir" (click)="Selection(answer.id, question.respostas)">
+            </ion-checkbox>
+            <ion-label> 
+              {{answer.texto}}
+            </ion-label>
+            
+          </ion-item>
+          <div *ngFor="let answer of question.respostas; let k=index">
+              <ion-textarea [(ngModel)]="questions[i].observacao" [ngModelOptions]="{standalone: true}" *ngIf="answer.observacaoObrigatoria && answer.checked && answer.exibir" style="border: solid 2px black; border-radius: 20px" rows="3"   placeholder="Digite as observações..."></ion-textarea>
+          </div>
+          
+        </ion-list>
+      </ion-item>
+
+      <!-- <ion-item *ngIf="isFormSubmitted && ionicForm.controls['checkboxArrayList'].errors?.required">
+        <label class="error-msg">
+          Please select Hobby!
+        </label>
+      </ion-item> -->
+
+    </ion-list>
+  </form>
+
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button expand="full" (click)="sendAnswers()">
+        <ion-icon slot="start" name="checkmark"></ion-icon>
+        Salvar
+      </ion-button>
+    </ion-col>
+
+    <ion-col size="6">  
+      <ion-button expand="full" (click)="closeModal()" color="danger">
+        Fechar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -1,5 +1,7 @@
 {
   "name": "DesafioIndustriall",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DesafioIndustriall</string>
+    <string name="title_activity_main">DesafioIndustriall</string>
+    <string name="package_name">desafioindustriall.app</string>
+    <string name="custom_url_scheme">desafioindustriall.app</string>
+</resources>
